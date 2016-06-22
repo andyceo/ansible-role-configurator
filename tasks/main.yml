@@ -1,0 +1,19 @@
+---
+
+- name: Create directories tree
+  file:
+    path={{ item.dir }}
+    mode={{ item.mode|default(configurator.default.directory.mode) }}
+    owner={{ item.owner|default(configurator.default.directory.owner) }}
+    group={{ item.group|default(configurator.default.directory.group) }}
+    state={{ item.state|default(configurator.default.directory.state) }}
+  with_items: "{{ configurator.directories }}"
+
+- name: Copy files
+  copy:
+    dest={{ item.file }}
+    src={{ item.src }}
+    mode={{ item.mode|default(configurator.default.file.mode) }}
+    owner={{ item.owner|default(configurator.default.file.owner) }}
+    group={{ item.group|default(configurator.default.file.group) }}
+  with_items: "{{ configurator.files }}"
