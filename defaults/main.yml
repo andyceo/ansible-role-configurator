@@ -12,6 +12,7 @@ configurator:
       mode: 644
       owner: root
       group: root
+      force: True
 
   directories:
 
