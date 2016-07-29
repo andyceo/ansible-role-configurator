@@ -6,7 +6,7 @@
     mode={{ item.mode|default(configurator.default.directory.mode) }}
     owner={{ item.owner|default(configurator.default.directory.owner) }}
     group={{ item.group|default(configurator.default.directory.group) }}
-    state={{ item.state|default(configurator.default.directory.state) }}
+    state=directory
   with_items: "{{ configurator.directories }}"
 
 - name: Copy files
@@ -18,3 +18,19 @@
     group={{ item.group|default(configurator.default.file.group) }}
     force={{ item.force|default(configurator.default.file.force) }}
   with_items: "{{ configurator.files }}"
+
+- name: Create symlinks with force mode
+  file:
+    dest={{ item.dest }}
+    src={{ item.src }}
+    force={{ item.force|default(configurator.default.symlink.force) }}
+    state=link
+  with_items: "{{ configurator.symlinks }}"
+  when: "item.force"
+
+- name: Create symlinks without force mode
+  command: ln -s {{ item.src }} {{ item.dest }}
+    creates={{ item.dest }}
+    chdir={{ item.chdir|default('.') }}
+  with_items: "{{ configurator.symlinks }}"
+  when: "not item.force"
