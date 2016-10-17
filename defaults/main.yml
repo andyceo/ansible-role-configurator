@@ -7,13 +7,16 @@ configurator:
       mode: 755
       owner: root
       group: root
+      notify: []
     file:
       mode: 644
       owner: root
       group: root
       force: True
+      notify: []
     symlink:
       force: False
+      notify: []
 
   directories:
 
