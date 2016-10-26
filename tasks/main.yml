@@ -1,5 +1,17 @@
 ---
 
+- name: Synchronize whole directories
+  copy:
+    src={{ item.value.src }}
+    dest={{ item.value.dest }}
+    owner={{ item.value.owner|default(configurator.default.fulldir.owner) }}
+    group={{ item.value.group|default(configurator.default.fulldir.group) }}
+    force={{ item.value.force|default(configurator.default.fulldir.force) }}
+  with_dict: "{{ configurator.fulldirs }}"
+  notify: "{{ item.value.notify|default(configurator.default.fulldir.notify) }}"
+  tags:
+    - configurator-fulldirs
+
 - name: Create directories tree
   file:
     path={{ item.dir }}

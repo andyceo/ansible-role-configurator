@@ -3,6 +3,11 @@
 configurator:
 
   default:
+    fulldir:
+      owner: root
+      group: root
+      force: True
+      notify: []
     directory:
       mode: 755
       owner: root
@@ -17,6 +22,8 @@ configurator:
     symlink:
       force: False
       notify: []
+
+  fulldirs: {}
 
   directories:
 
