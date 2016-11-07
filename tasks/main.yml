@@ -32,6 +32,7 @@
     owner={{ item.owner|default(configurator.default.file.owner) }}
     group={{ item.group|default(configurator.default.file.group) }}
     force={{ item.force|default(configurator.default.file.force) }}
+    backup={{ item.backup|default(configurator.default.file.backup) }}
   with_items: "{{ configurator.files }}"
   notify: "{{ item.notify|default(configurator.default.file.notify) }}"
   tags:

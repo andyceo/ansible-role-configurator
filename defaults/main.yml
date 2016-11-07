@@ -19,6 +19,7 @@ configurator:
       group: root
       force: True
       notify: []
+      backup: True
     symlink:
       force: False
       notify: []
