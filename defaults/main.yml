@@ -3,6 +3,9 @@
 configurator:
 
   default:
+    rsyncdir:
+      archive: yes
+      notify: []
     fulldir:
       owner: root
       group: root
@@ -23,6 +26,8 @@ configurator:
     symlink:
       force: False
       notify: []
+
+  rsyncdirs: {}
 
   fulldirs: {}
 

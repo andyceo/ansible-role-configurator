@@ -1,5 +1,17 @@
 ---
 
+# @todo make this not ask for password
+# @see https://github.com/ansible/ansible/issues/23834
+- name: Synchronize whole directories with rsync
+  synchronize:
+    src={{ item.value.src }}
+    dest={{ item.value.dest }}
+    archive={{ item.value.archive|default(configurator.default.rsyncdir.archive) }}
+  with_dict: "{{ configurator.rsyncdirs }}"
+  notify: "{{ item.value.notify|default(configurator.default.rsyncdir.notify) }}"
+  tags:
+    - configurator-rsyncdirs
+
 - name: Synchronize whole directories
   copy:
     src={{ item.value.src }}
