@@ -24,14 +24,15 @@
   tags:
     - configurator-fulldirs
 
-- name: Create directories tree
+- name: Create/update directories tree
   file:
     path={{ item.dir }}
     mode={{ item.mode|default(configurator.default.directory.mode) }}
     owner={{ item.owner|default(configurator.default.directory.owner) }}
     group={{ item.group|default(configurator.default.directory.group) }}
-    state=directory
+    state={{ item.state|default(configurator.default.directory.state) }}
   with_items: "{{ configurator.directories }}"
+  when: item.state|default(configurator.default.directory.state) in configurator.default.directory.possible_states
   notify: "{{ item.notify|default(configurator.default.directory.notify) }}"
   tags:
     - configurator-directories

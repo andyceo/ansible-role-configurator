@@ -15,7 +15,11 @@ configurator:
       mode: 755
       owner: root
       group: root
+      state: directory
       notify: []
+      possible_states:
+        - directory
+        - absent
     file:
       mode: 644
       owner: root
