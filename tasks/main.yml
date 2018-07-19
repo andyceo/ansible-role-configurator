@@ -51,6 +51,20 @@
   tags:
     - configurator-files
 
+- name: Render & сopy templates
+  template:
+    dest: "{{ item.value.dest }}"
+    src: "{{ item.value.src }}"
+    mode: "{{ item.value.mode|default(configurator.default.template.mode) }}"
+    owner: "{{ item.value.owner|default(configurator.default.template.owner) }}"
+    group: "{{ item.value.group|default(configurator.default.template.group) }}"
+    force: "{{ item.value.force|default(configurator.default.template.force) }}"
+    backup: "{{ item.value.backup|default(configurator.default.template.backup) }}"
+  with_dict: "{{ configurator.templates }}"
+  notify: "{{ item.notify|default(configurator.default.template.notify) }}"
+  tags:
+    - configurator-templates
+
 - name: Create symlinks with force mode
   file:
     dest={{ item.dest }}

@@ -11,6 +11,7 @@ Ubuntu 16.04
 - Full directory copying (`configurator.fulldirs`). Already existing files in `dest` will not be touched, if not changed or not exists in `src`. Be careful with trailing slashes (behavior is similar to rsync, see [docpage for copy Ansible module](http://docs.ansible.com/ansible/copy_module.html))
 - Directory creation and update its mode, owner, group (`configurator.directories`)
 - Files copying (`configurator.files`)
+- Can render and copy templates (config variable `configurator.templates`, tag `configurator-templates`). Note you can use variables (including vaulted variables), loops and other Jinja2 features in templates!
 - Symlinks creation (`configurator.symlinks`)
 - Can notify on change
 - Default values for mode, owner, group, notify can be provided

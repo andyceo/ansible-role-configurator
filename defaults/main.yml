@@ -30,6 +30,13 @@ configurator:
     symlink:
       force: False
       notify: []
+    template:
+      mode: 644
+      owner: root
+      group: root
+      force: True
+      notify: []
+      backup: True
 
   rsyncdirs: {}
 
@@ -41,5 +48,7 @@ configurator:
     - dir: /data
 
   files: []
+
+  templates: {}
 
   symlinks: []
