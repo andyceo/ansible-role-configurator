@@ -1,5 +1,17 @@
 ---
 
+- name: Delete individual files and directories (recursively)
+  file:
+    path={{ item.value }}
+    state=absent
+  with_dict: "{{ configurator.delete }}"
+  tags:
+    - configurator-delete
+    - configurator-directories
+    - configurator-files
+    - configurator-templates
+    - configurator-symlinks
+
 # @todo make this not ask for password
 # @see https://github.com/ansible/ansible/issues/23834
 - name: Synchronize whole directories with rsync

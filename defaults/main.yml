@@ -38,6 +38,8 @@ configurator:
       notify: []
       backup: True
 
+  delete: {}
+
   rsyncdirs: {}
 
   fulldirs: {}

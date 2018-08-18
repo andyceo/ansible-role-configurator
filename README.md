@@ -8,6 +8,7 @@ Ubuntu 16.04
 
 ## Features
 
+- Files and directories recursively deleting (`configurator.delete` settings dictionary, tag `configurator-delete`, also triggered on every other tag)
 - Full directory copying (`configurator.fulldirs`). Already existing files in `dest` will not be touched, if not changed or not exists in `src`. Be careful with trailing slashes (behavior is similar to rsync, see [docpage for copy Ansible module](http://docs.ansible.com/ansible/copy_module.html))
 - Directory creation and update its mode, owner, group (`configurator.directories`)
 - Files copying (`configurator.files`)
