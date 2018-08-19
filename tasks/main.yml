@@ -7,6 +7,8 @@
   with_dict: "{{ configurator.delete }}"
   tags:
     - configurator-delete
+    - configurator-rsyncdirs
+    - configurator-fulldirs
     - configurator-directories
     - configurator-files
     - configurator-templates
