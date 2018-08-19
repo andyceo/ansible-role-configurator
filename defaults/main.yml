@@ -44,10 +44,7 @@ configurator:
 
   fulldirs: {}
 
-  directories:
-
-    # Base data directory
-    - dir: /data
+  directories: {}
 
   files: []
 
