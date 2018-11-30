@@ -40,7 +40,7 @@
 
 - name: Create/update directories tree
   file:
-    path={{ item.key if not item.value else item.value.dir }}
+    path={{ item.key if not item.value or item.value.dir is not defined else item.value.dir }}
     mode={{ item.value.mode|default(configurator.default.directory.mode) }}
     owner={{ item.value.owner|default(configurator.default.directory.owner) }}
     group={{ item.value.group|default(configurator.default.directory.group) }}
